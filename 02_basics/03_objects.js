@@ -43,10 +43,33 @@ const sports = {
 // if we mention mysum:"mykey1" in obj then it'll not symbol
 // it return string
 
-
-
-
 // Note on Symbol
 // Symbols are unique and are often used as property keys when you want to avoid naming conflicts. Symbols are not enumerable in for...in loops, so they won't be accidentally included.
 
 
+// change value in obj
+JsUser.age=30;
+// console.log(JsUser);
+
+//freeze some value
+JsUser.email="james@chatgpt.com"
+Object.freeze(JsUser)
+// console.log(JsUser);
+
+//after freeze now we can't change value
+JsUser.age=20
+JsUser.email="james@microsoft.com"
+// console.log(JsUser);
+
+// Methods
+// They are properties of objects that are functions. When a function is part of an object, it is referred to as a method. Methods allow objects to perform actions or provide functionality.
+
+JsUser.greeting = function(){
+    console.log("Hello JS User");
+}
+
+JsUser.greetingTwo = function(){
+    console.log(`Hello JS user, ${this.name}`);
+}
+console.log(JsUser.greeting());
+console.log(JsUser.greetingTwo());
