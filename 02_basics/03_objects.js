@@ -53,7 +53,7 @@ JsUser.age=30;
 
 //freeze some value
 JsUser.email="james@chatgpt.com"
-Object.freeze(JsUser)
+// Object.freeze(JsUser)
 // console.log(JsUser);
 
 //after freeze now we can't change value
@@ -65,11 +65,15 @@ JsUser.email="james@microsoft.com"
 // They are properties of objects that are functions. When a function is part of an object, it is referred to as a method. Methods allow objects to perform actions or provide functionality.
 
 JsUser.greeting = function(){
-    console.log("Hello JS User");
+    // console.log("Hello JS User");
 }
 
 JsUser.greetingTwo = function(){
     console.log(`Hello JS user, ${this.name}`);
 }
+
+//when you have to refer same object - use 'this'
+
 console.log(JsUser.greeting());
 console.log(JsUser.greetingTwo());
+console.log(JsUser.greeting);
