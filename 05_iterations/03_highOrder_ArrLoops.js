@@ -110,5 +110,19 @@ const myCoding = [
 
 myCoding.forEach( (item) => {
     
-    console.log(item.languageName);
+    // console.log(item.languageName);
 } )
+
+// ----
+
+// const coding = ["js", "ruby", "java", "python", "cpp"]
+
+
+// const values = coding.forEach( (item) => {
+//     //console.log(item);
+//     return item
+// } )
+
+// console.log(values);
+
+
