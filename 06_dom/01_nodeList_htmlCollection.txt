@@ -1,0 +1,185 @@
+DOM Diagram
+
+              Window
+                |
+             Document
+                |
+               HTML
+            /        \
+          HEAD       BODY
+        /    /         |
+     TITLE  META      DIV ---------------ATTRIBUTE
+    /        /         \     \
+TEXTMODE   ATTRIBUTE   H1     P ---- TEXTMODE
+                    /    |      
+                TEXTMODE ATTRIBUTE  
+
+
+
+console.log(window)
+
+// accessing Document
+console.log(window.document)
+// for getting some hidden info
+console.dir(document)
+
+// get first ID of HTML
+document.getElementById('firstHeading')
+
+// manipulate (or change text inside this)
+document.getElementById('firstHeading').innerHTML = "<h1>Hello Everyone!</h1>"
+
+
+// --------------------------------------------------
+
+******** select elemets in DOM ********
+--> document.getElementById('title')
+   <h1 id=​"title" class=​"heading">​DOM Lec 1​</h1>​
+
+--> document.getElementById('title').id
+   'title'
+
+--> document.getElementById('title').class
+   undefined // className is correct syntax in DOM
+
+--> document.getElementById('title').className
+   'heading'
+
+--> document.getElementById('title').getAttribute
+   ƒ getAttribute() { [native code] }
+
+--> document.getElementById('title').getAttribute('id')
+   'title'
+
+--> document.getElementById('title').setAttribute('class','test')
+   undefined
+
+--> const title = document.getElementById('title')
+   undefined
+
+--> title
+   <h1 id=​"title" class=​"test">​DOM Lec 1​</h1>​
+
+--> title.style.backgroundColor = 'green'
+   'green'
+
+--> title.style.padding = '15px'
+   '15px'
+
+// -----------------
+
+****** Manipulate text in DOM ******
+--> title
+   <h1 id=​"title" class=​"heading">​…​</h1>​
+
+--> title.innerText //it shows text which only display
+   'DOM Lec 1'
+
+--> title.textContent //it show all text which is display and hidden
+   'DOM Lec 1test text'
+ 
+--> title.innerHTML // it shows text with tags
+   'DOM Lec 1<span style="display: none;">test text</span>'
+
+// ----------------
+
+****** Some more querySelector ******
+
+// querySelector gives first element
+
+--> document.querySelector('h2')
+<h2>​Lorem ipsum dolor sit.​</h2>​
+
+--> document.querySelector('#title')
+<h1 id=​"title" class=​"heading">​…​</h1>​
+
+--> document.querySelector('.heading')
+<h1 id=​"title" class=​"heading">​…​</h1>​
+
+--> document.querySelector('input [type="password"]')
+null
+
+--> document.querySelector('input[type="password"]')
+<input type=​"password" name id>​
+
+--> document.querySelector('p:first-child')
+null
+
+--> document.querySelector('ul')
+<ul>​…​</ul>​
+
+--> const myul = document.querySelector('ul')
+undefined
+
+--> myul.querySelector('li')
+<li class=​"list-item">​…​</li>​::marker​"one"</li>​
+
+--> const turnGreen  = myul.querySelector('li')
+undefined
+
+--> turnGreen.style.backgroundColor = "green"
+'green'
+
+
+// ----------------
+
+****** NodeList ******
+// NodeList is not array!
+(querySelectorAll)
+
+--> document.querySelectorAll('li')
+NodeList(4) [li.list-item, li.list-item, li.list-item, li.list-item]0: li.list-item1: li.list-item2: li.list-item3: li.list-itemlength: 4[[Prototype]]: NodeListentries: ƒ entries()forEach: ƒ forEach()item: ƒ item()keys: ƒ keys()length: (...)values: ƒ values()constructor: ƒ NodeList()Symbol(Symbol.iterator): ƒ values()Symbol(Symbol.toStringTag): "NodeList"get length: ƒ length()[[Prototype]]: Object
+
+--> const tempLiList = document.querySelectorAll('li')
+undefined
+
+--> tempLiList
+NodeList(4) [li.list-item, li.list-item, li.list-item, li.list-item]
+
+--> const myArr = [1,2,3,4]
+undefined
+
+// this is wrong way!!!!
+--> tempLiList.style.color = 'green'
+VM870:1 Uncaught TypeError: Cannot set properties of undefined (setting 'color')
+    at <anonymous>:1:24
+(anonymous) @ VM870:1
+
+// this is correct way!!!!
+--> tempLiList[0].style.color = 'green'
+'green'
+
+
+// using foreach in querySelectorAll
+-->  tempLiList.forEach(function (l){
+      l.style.backgroundColor = 'green'
+   })
+
+
+// ----------------
+
+****** HTMLCollection ******
+
+--> document.getElementsByClassName('list-item')
+HTMLCollection(4) [li.list-item, li.list-item, li.list-item, li.list-item]0: li.list-item1: li.list-item2: li.list-item3: li.list-itemlength: 4[[Prototype]]: HTMLCollectionitem: ƒ item()length: 1name: "item"arguments: (...)caller: (...)[[Prototype]]: ƒ ()[[Scopes]]: Scopes[0]length: (...)namedItem: ƒ namedItem()constructor: ƒ HTMLCollection()Symbol(Symbol.iterator): ƒ values()Symbol(Symbol.toStringTag): "HTMLCollection"get length: ƒ length()[[Prototype]]: Objectconstructor: ƒ Object()hasOwnProperty: ƒ hasOwnProperty()isPrototypeOf: ƒ isPrototypeOf()propertyIsEnumerable: ƒ propertyIsEnumerable()toLocaleString: ƒ toLocaleString()toString: ƒ toString()valueOf: ƒ valueOf()__defineGetter__: ƒ __defineGetter__()__defineSetter__: ƒ __defineSetter__()__lookupGetter__: ƒ __lookupGetter__()__lookupSetter__: ƒ __lookupSetter__()__proto__: (...)get __proto__: ƒ __proto__()set __proto__: ƒ __proto__()
+
+--> const tempClassList = document.getElementsByClassName('list-item')
+undefined
+
+--> tempClassList.forEach(function (li) {
+    console.log(li)
+   })
+VM1251:1 Uncaught TypeError: tempClassList.forEach is not a function
+    at <anonymous>:1:15
+(anonymous) @ VM1251:1
+
+--> Array.from(tempClassList)
+(4) [li.list-item, li.list-item, li.list-item, li.list-item]0: li.list-item1: li.list-item2: li.list-item3: li.list-itemlength: 4[[Prototype]]: Array(0)at: ƒ at()concat: ƒ concat()constructor: ƒ Array()copyWithin: ƒ copyWithin()entries: ƒ entries()every: ƒ every()fill: ƒ fill()filter: ƒ filter()find: ƒ find()findIndex: ƒ findIndex()findLast: ƒ findLast()findLastIndex: ƒ findLastIndex()flat: ƒ flat()flatMap: ƒ flatMap()forEach: ƒ forEach()includes: ƒ includes()indexOf: ƒ indexOf()join: ƒ join()keys: ƒ keys()lastIndexOf: ƒ lastIndexOf()length: 0map: ƒ map()pop: ƒ pop()push: ƒ push()reduce: ƒ reduce()reduceRight: ƒ reduceRight()reverse: ƒ reverse()shift: ƒ shift()slice: ƒ slice()some: ƒ some()sort: ƒ sort()splice: ƒ splice()toLocaleString: ƒ toLocaleString()toReversed: ƒ toReversed()toSorted: ƒ toSorted()toSpliced: ƒ toSpliced()toString: ƒ toString()unshift: ƒ unshift()values: ƒ values()with: ƒ with()Symbol(Symbol.iterator): ƒ values()Symbol(Symbol.unscopables): {at: true, copyWithin: true, entries: true, fill: true, find: true, …}[[Prototype]]: Object
+
+--> const myCobvertedArray = Array.from(tempClassList)
+undefined
+
+--> myCobvertedArray.forEach(function (li) {
+    li.style.color = 'orange'
+   })
+undefined
