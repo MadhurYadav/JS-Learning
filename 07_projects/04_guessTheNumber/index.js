@@ -9,4 +9,4 @@ const remaining = document.querySelector('.lastResult')
 const lowOrHi = document.querySelector('.lowOrHi')
 const startOver= document.querySelector('.resultParas')
 
-// 
+// add line here
