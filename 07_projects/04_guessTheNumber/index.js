@@ -10,3 +10,4 @@ const lowOrHi = document.querySelector('.lowOrHi')
 const startOver= document.querySelector('.resultParas')
 
 // add line here
+// add another line
