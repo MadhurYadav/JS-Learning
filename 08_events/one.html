@@ -30,9 +30,9 @@
 
     // we genrally don't write false as by default it's false only.
     // document.getElementById('owl').addEventListener('click', function(){},false)
-    document.getElementById('owl').addEventListener('click', function(){
-        alert("owl clicked again")
-    })
+    // document.getElementById('owl').addEventListener('click', function(){
+    //     alert("owl clicked again")
+    // })
 
     // other methonds
     // attachEvent()
@@ -45,18 +45,68 @@
     // clientX, clientY, screenX, screenY
     // altkey, ctrlkey, shiftkey, keyCode
 
-    // event prpogation
+    // # event prpogation
     // false or true
-    // false - 
+    // false - event bubbling (execution andar se bahar hota h)
+    // (inner element to outer element)
 
-    document.getElementById('images').addEventListener('click', function(e){
-        console.log("clicked inside the ul");
-    }, false)
+    // true - event capturing (execution bhar se andar hota h)
+    // (outer element to inner element)
 
-    document.getElementById('owl').addEventListener('click', function(e){
-        console.log("owl clicked");
-    }, false)
+    // Result (event bubbling)
+    // owl clicked
+    // clicked inside the ul
 
-    //
+    // document.getElementById('images').addEventListener('click', function(e){
+    //     console.log("clicked inside the ul");
+    // }, false)
+
+    // document.getElementById('owl').addEventListener('click', function(e){
+    //     console.log("owl clicked");
+    // }, false)
+
+    // Result (event capturing)
+    // clicked inside the ul
+    // owl clicked
+    // document.getElementById('images').addEventListener('click', function(e){
+    //     console.log("clicked inside the ul");
+    // }, true)
+
+    // document.getElementById('owl').addEventListener('click', function(e){
+    //     console.log("owl clicked");
+    // }, true)
+
+    // if we don't want event to bubble (like inner element and outer element seprate)
+    // e.stopPropagation()
+    // Result - owl clicked
+    // document.getElementById('images').addEventListener('click', function(e){
+    //     console.log("clicked inside the ul");
+    // }, false)
+
+    // document.getElementById('owl').addEventListener('click', function(e){
+    //     console.log("owl clicked");
+    //     e.stopPropagation()
+    // }, false)
+
+    // // prevent default
+
+    // document.getElementById('google').addEventListener('click',function(e){
+    //     e.preventDefault();
+    //     console.log("google clicked");
+    // }, false)
+   
+   // Project -  If we click on image it should disappear
+   document.querySelector('#images').addEventListener('click', function(e){
+    // console.log(e.target.parentNode);
+
+    // this if statement checks that if we click on li then all pics should't remove
+    if(e.target.tagName == 'IMG'){
+        console.log(e.target.id);
+        let removeIt = e.target.parentNode;
+        removeIt.remove();
+        // removeIt.parentNode.removeChild(removeIt) // we can use any method
+    }
+   
+   }, false)
 </script>
 </html>
