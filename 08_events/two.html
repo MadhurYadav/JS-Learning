@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello Everyone!</h1>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    // setTimeout return value only once after particular Time
+    // setTimeout(function(){
+    //     console.log("Maddy");
+    // },2000)
+    // console.log("Soul");
+
+    // setInterval return values repeatedly after particular interval
+    // setInterval(function(){
+    //     console.log("Repeat");
+    // },3000)
+
+    // const sayMaddy = function(){
+    //     console.log("Hello!");
+    // }
+
+    // setTimeout(sayMaddy,2000)
+
+    const changeText = function(){
+        document.querySelector("h1").innerHTML = "learning JS"
+    }
+
+    const changeMe = setTimeout(changeText, 2000)
+    // clearTimeout - to clear setTimeout
+    document.querySelector('#stop').addEventListener('click', function(){
+    clearTimeout(changeMe)
+    console.log("STOPPED");
+   })
+    
+</script>
+</html>
