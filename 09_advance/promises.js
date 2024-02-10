@@ -112,3 +112,4 @@ fetch('https://jsonplaceholder.typicode.com/users')
 
 // promise.all
 // yes this is also available, kuch reading aap b kro.
+// end
